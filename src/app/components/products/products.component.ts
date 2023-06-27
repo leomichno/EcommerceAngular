@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import {Product} from '../../Reglaprod/prod.component';
+import {CreateProductDTO, Product} from '../../Reglaprod/prod.component';
 import {StoreService} from '../../service/store.service';
 import {ProductsService} from '../../service/products.service';
 @Component({
@@ -11,6 +11,17 @@ export class ProductsComponent {
   myShoppingCart: Product[] = [];
   total=0;
   showProductdetail = false;
+  productChosen:Product={
+    id:'',
+    title:'',
+    price:0,
+    images:[],
+    description:'',
+    category:{
+      id:'',
+      name:'',
+    },
+  }
  
   products: Product[] = []
   constructor(
@@ -35,7 +46,19 @@ export class ProductsComponent {
   }
   onShowDetail(id:string){
     this.productsService.getProduct(id)
-    .subscribe((data: any): void => { console.log('Product', data); })
+    .subscribe((data: any): void => { 
+      this.toggleProductdetail();
+      this.productChosen=data })
   }
+  createNewProduct(){
+    const product:CreateProductDTO = {
+      title:'Nuevo producto',
+      price:150,
+      images:['https://www.uba.ar/internacionales/archivos/TEST.jpg'],
+      description:'nuevo producto de prueba',
+      categoryId:1,
+    }
+    this.productsService.create(product).subscribe(data =>{this.products.unshift(data)})
 
+  }
 }

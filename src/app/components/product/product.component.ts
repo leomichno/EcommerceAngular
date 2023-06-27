@@ -13,7 +13,7 @@ export class ProductComponent {
     price:0,
     images:[],
     description:'',
-    categoty:{
+    category:{
       id:'',
       name:'',
     },

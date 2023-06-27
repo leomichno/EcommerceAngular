@@ -25,6 +25,7 @@ import { RegistroComponent } from './components/registro/registro.component';
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

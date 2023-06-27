@@ -1,3 +1,4 @@
+<button (click)="createNewProduct()">agregar</button>
 <button (click)="toggleProductdetail()">click</button>
 <p>cantidad {{myShoppingCart.length}}</p>
 <p>Total: ${{total}}</p>
@@ -8,8 +9,10 @@
     ></app-product>
 </div>
 <div class="product-detail" [class.active]="showProductdetail">
-    <div>
+    <div *ngIf="productChosen">
         <button (click)="toggleProductdetail()">Close</button>
-
+        <h1>{{productChosen.title}}</h1>
+        <img [src]="productChosen.images" alt="">
+        <p>{{productChosen.description}}</p>
     </div>
 </div>

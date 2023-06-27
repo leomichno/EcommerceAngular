@@ -19,8 +19,14 @@ export class ProductsService {
   getProduct(id:string){
     return this.http.get<Product>(`${this.apiUrl}/${id}`)
   }
-  create(data:CreateProductDTO){
-    return this.http.post<Product>(this.apiUrl,data);
+  create(dto:CreateProductDTO){
+    return this.http.post<Product>(this.apiUrl,dto);
+  }
+  update(id:string, dto:any){
+    return this.http.put<Product>(`${this.apiUrl}/${id}`,dto)
+  }
+  delete(id:string){
+    return this.http.get<boolean>(`${this.apiUrl}/${id}`)
   }
 }
 // vamos hacer un request (peticion) para que nos devuelva todos los productos

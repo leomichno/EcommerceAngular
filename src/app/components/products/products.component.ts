@@ -61,4 +61,21 @@ export class ProductsComponent {
     this.productsService.create(product).subscribe(data =>{this.products.unshift(data)})
 
   }
+  updateProduct(){
+    const change ={
+      title:"hola este es el nuevo"
+    }
+    const id = this.productChosen.id;
+    this.productsService.update(id,change).subscribe(data=>{const productIndex = this.products.findIndex(item => item.id ===this.productChosen.id)
+    this.products[productIndex]=data;
+    this.productChosen=this.products[productIndex];  
+    });
+  }
+  deleteProduct(){
+    const id = this.productChosen.id;
+    this.productsService.delete(id).subscribe(data=>{const productIndex = this.products.findIndex(item => item.id ===this.productChosen.id);
+    this.products.splice(productIndex,1);
+    this.showProductdetail = false;
+    })
+  }
 }

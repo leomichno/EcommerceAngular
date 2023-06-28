@@ -1,6 +1,6 @@
 
     <h2>{{producto.title}}</h2>
     <app-img *ngIf="producto.images.length >0" [img]="producto.images[0]"></app-img>
-    <p>{{producto.price | currency:'ars'}}</p>
+    <p>{{producto.price | currency:'$'}}</p>
     <button (click)="onShowDetail()">Detalle</button>
     <button (click)="onAddToCart()">Add Card</button>

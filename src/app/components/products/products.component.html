@@ -1,5 +1,5 @@
 <button (click)="createNewProduct()">agregar</button>
-<button (click)="toggleProductdetail()">click</button>
+<button (click)="onShowDetail('15550')">manejo de error</button>
 <p>cantidad {{myShoppingCart.length}}</p>
 <p>Total: ${{total}}</p>
 <div class="products--grid">
@@ -8,6 +8,7 @@
         (showProduct)="onShowDetail($event)"
     ></app-product>
 </div>
+<button (click)="loadmore()">LoadMore</button>
 <div class="product-detail" [class.active]="showProductdetail">
     <div *ngIf="productChosen">
         <button (click)="toggleProductdetail()">Close</button>

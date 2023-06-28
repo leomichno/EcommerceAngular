@@ -8,6 +8,9 @@ import {ProductsService} from '../../service/products.service';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent {
+  offset=0;
+  limit=10;
+  statusDetail: 'loading' | 'success' | 'error' | 'init' = 'init';
   myShoppingCart: Product[] = [];
   total=0;
   showProductdetail = false;
@@ -32,7 +35,7 @@ export class ProductsComponent {
   }
 
   ngOnInit(){
-    this.productsService.getAllProducts()
+    this.productsService.getProductsByPage(10,0)
     .subscribe(data => { this.products=data});
   }
 
@@ -45,11 +48,18 @@ export class ProductsComponent {
     this.showProductdetail =!this.showProductdetail
   }
   onShowDetail(id:string){
+    this.statusDetail = 'loading';
     this.productsService.getProduct(id)
-    .subscribe((data: any): void => { 
-      this.toggleProductdetail();
-      this.productChosen=data })
-  }
+    .subscribe(data => { 
+      this.productChosen=data;
+      this.statusDetail = 'success';
+    }, Response => {
+      window.alert(Response);
+      this.statusDetail = 'error';
+    }
+      )
+    }
+
   createNewProduct(){
     const product:CreateProductDTO = {
       title:'Nuevo producto',
@@ -77,5 +87,12 @@ export class ProductsComponent {
     this.products.splice(productIndex,1);
     this.showProductdetail = false;
     })
+  }
+  loadmore(){
+    this.productsService.getProductsByPage(this.limit,this.offset)
+    .subscribe(data => { 
+      this.products=this.products.concat(data);
+      this.offset+=this.limit
+    });
   }
 }

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {Product} from './Reglaprod/prod.component'
 
 
 @Component({
@@ -8,5 +7,5 @@ import {Product} from './Reglaprod/prod.component'
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  
+  constructor(){}
 }

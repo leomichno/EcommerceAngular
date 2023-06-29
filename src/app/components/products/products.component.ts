@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import {CreateProductDTO, Product} from '../../Reglaprod/prod.component';
+import {CreateProductDTO, Product} from '../../Models/prod.models';
 import {StoreService} from '../../service/store.service';
 import {ProductsService} from '../../service/products.service';
 @Component({
@@ -49,6 +49,7 @@ export class ProductsComponent {
   }
   onShowDetail(id:string){
     this.statusDetail = 'loading';
+    this.toggleProductdetail();
     this.productsService.getProduct(id)
     .subscribe(data => { 
       this.productChosen=data;

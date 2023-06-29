@@ -12,7 +12,6 @@ import { User } from 'src/app/Models/user.models';
 })
 export class NavComponent implements OnInit {
   profile: User | null = null;
-  token ="";
   constructor(
     private storeService:StoreService,
     private usersService:UsersService,
@@ -44,17 +43,11 @@ export class NavComponent implements OnInit {
     });
   }
   login(){
-    this.authService.login('leitomxd@gmail.com','yegua')
-    .subscribe(rta=> {
-      this.token=rta.access_token;
-      this.getProfile();
+    this.authService.loginAndGet('leitomxd@gmail.com','yegua')
+    .subscribe(user=> {
+      this.profile=user;
     });
   }
-  getProfile(){
-    this.authService.profile(this.token)
-    .subscribe(user => {
-      this.profile = user;
-    })
-  }
+
 
 }

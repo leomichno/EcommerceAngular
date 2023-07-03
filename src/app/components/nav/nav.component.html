@@ -1,3 +1,4 @@
+<!-- movil -->
 <div class="show-mobile">
     <div>
       <button (click)="toggleMenu()">
@@ -7,7 +8,7 @@
         <img src="./assets/svg/logo_yard_sale.svg" alt="logo">
       </a>
       <a href="">
-        <img src="./assets/svg/icon_shopping_cart " alt="logo">
+        <img src="" alt="logo">
       </a>
     </div>
     <div class="side-menu" [class.active]="activeMenu">
@@ -19,28 +20,36 @@
         </ul>
     </div>
   </div>
+  <!-- escritorio -->
   <div class="hide-mobile">
     <div>
       <nav>
-        <a class="logo" href="">
+        <a class="logo" href="/category">
           <img src="./assets/svg/logo_yard_sale.svg" alt="logo">
         </a>
         <ul>
-          <li><a href="">All</a></li>
-          <li><a href="">Clothes</a></li>
-          <li><a href="">Electronics</a></li>
+          <!-- <li><a href="">Home</a></li> -->
+          <li><a href="/category">Store</a></li>
+          <!-- <li><a href="">About us</a></li> -->
         </ul>
       </nav>
       <div class="info">
         <div class="account">
-          <button *ngIf="!profile; else elseBlock" (click)="login()">login</button>
-          <ng-template #elseBlock>{{ profile?.email}} </ng-template>
+          <a *ngIf="!usuario; else elseBlock"  class="buttonRegister" href="/register" >Register</a>
+          <ng-template  #elseBlock>{{ usuario}} </ng-template>
         </div>
-        <div class="cart">
-          <a href="">
-            <img src="./assets/svg/icon_shopping_cart.svg" alt="logo">
-          </a>
-          <span class="counter">{{counter}}</span>
+        <div class="cart" (mouseenter)="onItemsCart()"(mouseleave)="offItemsCart()">
+          <div class="cartEdit" >
+            <a href=""><img src="./assets/svg/icon_shopping_cart_notification.svg" alt="logo"></a>
+            <span class="counter">{{counter}}</span>
+          </div>
+          <div class="dropdownMenu" *ngIf="seeItemscart">
+            <div *ngFor="let product of myShoppingCart">
+              <h1>{{ product.title }}</h1>
+              <app-img *ngIf="product.images.length >0" [img]="product.images[1]"></app-img>
+              <h1>{{total}}</h1>
+            </div>
+          </div>
         </div>
       </div>
     </div>

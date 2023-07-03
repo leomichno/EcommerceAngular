@@ -26,7 +26,7 @@ export class ProductsComponent {
     },
   }
  
-  products: Product[] = []
+  @Input() products: Product[] = []
   constructor(
     private storeService:StoreService,
     private productsService: ProductsService )
@@ -34,10 +34,6 @@ export class ProductsComponent {
       this.myShoppingCart=this.storeService.getmyShoppingCart()
   }
 
-  ngOnInit(){
-    this.productsService.getProductsByPage(10,0)
-    .subscribe(data => { this.products=data});
-  }
 
   onAddtoShoppingCart(product:Product): void{
     this.storeService.addProduct(product);

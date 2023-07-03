@@ -1,14 +1,13 @@
-<button (click)="createNewProduct()">agregar</button>
-<button (click)="onShowDetail('15550')">manejo de error</button>
-<p>cantidad {{myShoppingCart.length}}</p>
-<p>Total: ${{total}}</p>
+<!-- <button (click)="createNewProduct()">agregar</button> -->
+<!-- <button (click)="onShowDetail('15550')">manejo de error</button> -->
+<!-- <p>cantidad {{myShoppingCart.length}}</p> -->
 <div class="products--grid">
     <app-product [producto]="prod" *ngFor="let prod of products"
         (addedProduct)="onAddtoShoppingCart($event)"
         (showProduct)="onShowDetail($event)"
     ></app-product>
 </div>
-<button (click)="loadmore()">LoadMore</button>
+<div class="buttonLoad"><button (click)="loadmore()">LoadMore</button></div>
 <div class="product-detail" [class.active]="showProductdetail">
     <div *ngIf="productChosen">
         <button (click)="toggleProductdetail()">Close</button>

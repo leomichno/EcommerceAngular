@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class ImgComponent {
   @Input()  img : string  = "nuestro primer string";
-  imgDefault="../../../assets/images/default.png";
+  imgDefault="https://daytona.com.ar/pub/media/catalog/product/cache/974eda8db8bcc5c45a8b57c1327d6720/3/1/31955.jpg";
   imgError(){
     this.img=this.imgDefault;
   }

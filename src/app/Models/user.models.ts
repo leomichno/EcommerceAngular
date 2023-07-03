@@ -6,5 +6,4 @@ export interface User  {
 }
 
 export interface CreateUserDTO extends Omit <User,'id'>{
-   
 }

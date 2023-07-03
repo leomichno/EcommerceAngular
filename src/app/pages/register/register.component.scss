@@ -1,0 +1,48 @@
+.centrado{
+    background-image: linear-gradient(45deg, #a2c09c 0%, #9fcf9f 50%, #9fcf9f 50%, #aad868 100%);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.BloquePrincipal{
+    background: rgb(211, 230, 211);
+    width: 300px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-around;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+}
+.datosreg li {
+    margin: 30px 0;
+}
+.datosreg li input{
+    border:none;
+    border-bottom: 1px black solid;
+    background: rgb(211, 230, 211);
+    outline: none;
+    caret-color:none;
+}
+.BloquePrincipal button{
+    border-radius: 10px;
+    width: 200px;
+    height: 30px;
+}
+
+.BloquePrincipal button:hover{
+    cursor: pointer;
+}
+
+.BloquePrincipal a{
+    color: rgb(160, 142, 53);
+    font-size: 12px;
+}
+.datosreg li input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px rgb(211, 230, 211) inset !important;
+    -webkit-text-fill-color: inherit !important;
+  }

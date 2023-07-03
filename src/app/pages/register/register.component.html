@@ -1,1 +1,13 @@
-<p>register works!</p>
+ <div class="centrado">
+        <div class="BloquePrincipal">
+            <h1>SING UP</h1>
+            <ul class="datosreg">
+                <li><input type="text" name="nombre" placeholder="Name" [(ngModel)]="regUser.name"></li>
+                <li><input type="text" name="email" placeholder="Email" [(ngModel)]="regUser.email"></li>
+                <li><input type="password" name="Password" placeholder="Password" [(ngModel)]="regUser.password"></li>
+            </ul>
+            <button (click)="createUser()">Register</button>
+            <button (click)="login()">login</button>
+            <a href="">Forgot Password?</a>
+        </div>
+</div>
